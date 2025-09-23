@@ -1,0 +1,59 @@
+<!-- ArticleListComponent.html -->
+<style>
+    .article-list-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        background: #f9f9fc;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        max-width: 600px;
+    }
+    .article-list-card .article-title {
+        font-size: 1.7em;
+        font-weight: bold;
+        color: #2d3a4a;
+        margin-bottom: 8px;
+    }
+    .article-list-card .article-meta {
+        font-size: 0.95em;
+        color: #6c757d;
+        margin-bottom: 10px;
+    }
+    .article-list-card .article-tags .tag {
+        background: #e3f2fd;
+        color: #1976d2;
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-right: 4px;
+        font-size: 0.85em;
+        display: inline-block;
+    }
+    .article-list-card .article-image img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .article-list-card .article-summary {
+        margin-top: 12px;
+        font-size: 1.1em;
+        color: #333;
+    }
+</style>
+
+<div class="article-list-card">
+    <div class="article-title">${title}</div>
+    <div class="article-meta">
+        <span>By ${author}</span> |
+        <span>${publishDate}</span>
+    </div>
+    <div class="article-tags">
+        <sly data-sly-list.tag="${tags}">
+            <span class="tag">${tag}</span>
+        </sly>
+    </div>
+    <div class="article-image">
+        <sly data-sly-test="${thumbnailImageUrl}">
+            <img src="${thumbnailImage}" alt="${title}lass="article-summary">${summary}</div>
+</div>

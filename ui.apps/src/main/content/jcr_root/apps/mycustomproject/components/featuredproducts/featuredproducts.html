@@ -1,0 +1,85 @@
+<div class="featured-products">
+    <style>
+        .featured-products {
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+        .featured-products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #222;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .product-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+        }
+        .product-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .product-image-title {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .product-title {
+            font-size: 1.2rem;
+            margin: 0.5rem 0 0.25rem 0;
+            font-weight: 600;
+            text-align: center;
+        }
+        .product-description {
+            font-size: 0.95rem;
+            color: #555;
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            color: #2196f3;
+            font-weight: bold;
+            margin-top: auto;
+        }
+    </style>
+    <h2>Featured Products</h2>
+    <ul class="product-list">
+        <sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.FeaturedProductsModel">
+        <sly data-sly-list.product="${model.products}">
+        <li class="product-card">
+            <h3 class="product-title">${product.title}</h3>
+            <p class="product-description">${product.description}</p>
+            <span class="product-price">${product.price}</span>
+        </li>
+        </sly>
+        <sly data-sly-test="${!model.products || model.products.size == 0}">
+        <li class="product-card">
+            <div class="product-image-title">No products configured yet.</div>
+        </li>
+        </sly>
+        </sly>
+    </ul>
+</div>
