@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Scenic Highlights"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <links
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                class="full-width"
+                composite="{Boolean}true"
+                fieldLabel="Links">
+                <field
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/foundation/form/fieldset"
+                    name="./scenes">
+                    <layout
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"
+                        method="absolute"/>
+                    <items jcr:primaryType="nt:unstructured">
+                        <column
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <placename
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Place Name"
+                                    name="./placeName"
+                                    value="\0"/>
+                                <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Description"
+                                    name="./description"
+                                    value="\0"/>
+                                <location
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Location"
+                                    name="./location"
+                                    value="\0"/>
+                                <scenaryimage
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="/libs/granite/ui/components/coral/foundation/form/fileupload"
+                                    fieldLabel="Scenary Image"
+                                    name="./scenaryImage"
+                                    value="\0"/>
+                            </items>
+                        </column>
+                    </items>
+                </field>
+            </links>
+            <title
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="Product Title"
+                name="./newtitle"
+                value="Sample Product"/>
+        </items>
+    </content>
+</jcr:root>

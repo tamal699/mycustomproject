@@ -1,0 +1,80 @@
+<div class="scenic-highlight">
+    <style>
+        .scenic-highlight {
+            padding: 2rem;
+            background: #fdfdfd;
+        }
+        .scenic-highlight-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+        .scenic-highlight-card {
+            background: linear-gradient(135deg, #e0f7fa 0%, #fdf6e3 100%);
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(44, 62, 80, 0.08);
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
+            width: 320px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: box-shadow 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .scenic-highlight-card:hover {
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.18);
+            transform: translateY(-4px) scale(1.02);
+        }
+        .scenic-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2e8b57;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+        .scenic-location {
+            font-size: 1rem;
+            color: #00796b;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-align: left;
+        }
+        .scenic-description {
+            font-size: 1.05rem;
+            color: #444;
+            text-align: left;
+            margin-bottom: 0.5rem;
+            flex: 1;
+        }
+        .scenic-card-footer {
+            font-size: 0.92rem;
+            color: #aaa;
+            margin-top: auto;
+            text-align: right;
+            width: 100%;
+        }
+    </style>
+
+    <sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.ScenicHighlightsModel"/>
+    <ul class="scenic-highlight-list">
+        <sly data-sly-list.scene="${model.scenes}">
+            <li class="scenic-highlight-card">
+                <h3 class="scenic-title">${scene.placeName}</h3>
+                <div class="scenic-location">
+                    <span>📍 ${scene.location}</span>
+                </div>
+                <div class="scenic-description">${scene.description}</div>
+                <div class="scenic-card-footer">
+
+                </div>
+            </li>
+        </sly>
+    </ul>
+</div>
