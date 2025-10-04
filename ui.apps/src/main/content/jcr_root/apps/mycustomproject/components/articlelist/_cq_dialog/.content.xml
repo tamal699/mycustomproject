@@ -1,67 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root
-        xmlns:jcr="http://www.jcp.org/jcr/1.0"
-        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-        xmlns:cq="http://www.day.com/jcr/cq/1.0"
-        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
-        jcr:primaryType="nt:unstructured"
-        jcr:title="Article List"
-        sling:resourceType="cq/gui/components/authoring/dialog">
-
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Article List"
+    sling:resourceType="cq/gui/components/authoring/dialog">
     <content
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
         <items jcr:primaryType="nt:unstructured">
             <column
-                    jcr:primaryType="nt:unstructured"
-                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
                 <items jcr:primaryType="nt:unstructured">
-
                     <title
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Article Title"
-                            name="./title"
-                            required="true"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Article Title"
+                        name="./title"
+                        required="true"/>
                     <summary
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                            fieldLabel="Summary"
-                            name="./summary"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Summary"
+                        name="./summary"/>
                     <author
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                            fieldLabel="Author"
-                            name="./author"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Author"
+                        name="./author"/>
                     <publishDate
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                            fieldLabel="Publish Date"
-                            name="./publishDate"
-                            type="datetime"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                        fieldLabel="Publish Date"
+                        name="./publishDate"
+                        type="datetime"/>
                     <tags
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="cq/gui/components/common/tagspicker"
-                            fieldLabel="Tags"
-                            name="./tags"
-                            multiple="true"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/common/tagspicker"
+                        fieldLabel="Tags"
+                        multiple="true"
+                        name="./tags"/>
                     <thumbnailImage
-                            jcr:primaryType="nt:unstructured"
-                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                            fieldLabel="Thumbnail Image"
-                            name="./thumbnailImage"
-                            allowUpload="true"
-                            autoStart="false"
-                            multiple="false"
-                            fileNameParameter="fileName"
-                            mimeTypes="[image/png,image/jpeg,image/gif]"
-                            useHTML5="true"/>
-
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                        allowUpload="true"
+                        autoStart="false"
+                        fieldLabel="Thumbnail Image"
+                        fileNameParameter="fileName"
+                        mimeTypes="[image/png,image/jpeg,image/gif]"
+                        multiple="false"
+                        name="./thumbnailImage"
+                        useHTML5="true"/>
                 </items>
             </column>
         </items>

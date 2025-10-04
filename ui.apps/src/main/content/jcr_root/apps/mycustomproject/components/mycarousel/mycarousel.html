@@ -1,0 +1,28 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='app.mycustomproject.components.mycarousel'}" />
+
+<sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.CarouselModel" />
+
+<div class="carousel-container">
+  <div class="carousel-slides">
+    <sly data-sly-list.slide="${model.carouselSlides}">
+      <div class="slide">
+        <img src="${slide.image @ context='uri'}" alt="${slide.title}" />
+
+        <div class="slide-content">
+          <h2 class="slide-title">${slide.title}</h2>
+          <p class="slide-description">${slide.description}</p>
+          
+          <sly data-sly-test="${slide.link}">
+            <a href="${slide.link @ context='uri'}" class="slide-btn">Learn More</a>
+          </sly>
+        </div>
+      </div>
+    </sly>
+  </div>
+  <button class="prev">‹</button>
+  <button class="next">›</button>
+  
+  <!-- Optional: Indicators -->
+  <div class="carousel-dots"></div>
+</div>
