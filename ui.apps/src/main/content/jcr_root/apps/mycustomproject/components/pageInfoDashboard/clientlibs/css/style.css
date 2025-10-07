@@ -1,0 +1,79 @@
+.page-info-dashboard {
+  background: #1e1e1e;
+  color: #f1f1f1;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+}
+
+.pid-title {
+  font-size: 1.5em;
+  text-align: center;
+  color: #00c6ff;
+  margin-bottom: 10px;
+}
+
+.pid-toggle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.pid-btn {
+  background-color: #333;
+  color: #f1f1f1;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pid-btn:hover {
+  background-color: #00c6ff;
+  color: #000;
+}
+
+.pid-section {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.pid-section.active {
+  display: block;
+}
+
+.pid-info p {
+  margin: 5px 0;
+}
+
+.pid-list {
+  list-style: none;
+  padding: 0;
+}
+
+.pid-item {
+  padding: 5px 10px;
+  border-bottom: 1px solid #444;
+}
+
+.pid-name {
+  color: #00c6ff;
+  font-weight: bold;
+  display: block;
+}
+
+.pid-type {
+  color: #aaa;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

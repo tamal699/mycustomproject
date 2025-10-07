@@ -1,0 +1,50 @@
+<sly
+  data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+  data-sly-call="${clientlib.all @ categories='app.mycustomproject.components.pageinfodashboard'}"
+/>
+<div
+  class="page-info-dashboard"
+  data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.PageInfoDashboardModel"
+>
+  <h2 class="pid-title">Page Info Dashboard</h2>
+
+  <!-- Toggle buttons -->
+  <div class="pid-toggle">
+    <button class="pid-btn" id="showPageInfoBtn">Show Page Metadata</button>
+    <button class="pid-btn" id="showResourceInfoBtn">Show Content Structure</button>
+  </div>
+
+  <!-- ✅ PAGE INFO SECTION -->
+  <div id="pageInfoSection" class="pid-section active">
+    <h3>Page Info (via ScriptVariable)</h3>
+    <div class="pid-info">
+      <p><strong>Title:</strong> ${model.pageTitle}</p>
+      <p><strong>Path:</strong> ${model.pagePath}</p>
+      <p><strong>Template:</strong> ${model.pageTemplate}</p>
+      <p><strong>Last Modified:</strong> ${model.lastModified}</p>
+      <p><strong>Modified By:</strong> ${model.lastModifiedBy}</p>
+    </div>
+
+    <h3>Page Info (via PageManager)</h3>
+    <div class="pid-info">
+      <p><strong>Title:</strong> ${model.pageTitleViaManager}</p>
+      <p><strong>Path:</strong> ${model.pagePathViaManager}</p>
+    </div>
+  </div>
+
+  <!-- ✅ RESOURCE STRUCTURE SECTION -->
+  <div
+    id="resourceInfoSection"
+    class="pid-section"
+    data-sly-use.resourceModel="com.mycompany.aem.mycustomproject.core.models.ResourceInfoDashboardModel"
+  >
+    <h3>Child Pages (via Page API)</h3>
+    <ul class="pid-list" data-sly-list.child="${resourceModel.childResources}">
+      <li class="pid-item">
+        <p><strong>Title:</strong> ${child.title}</p>
+        <p><strong>Path:</strong> ${child.path}</p>
+        <p><strong>Template:</strong> ${child.template}</p>
+      </li>
+    </ul>
+  </div>
+</div>
