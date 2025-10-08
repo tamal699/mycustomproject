@@ -1,0 +1,94 @@
+<sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.PageListModel">
+
+    <div class="page-list-container theme-light">
+        <h1 class="page-list-title">${model.currentPageTitle}</h1>
+
+        <sly data-sly-test="${model.childPages && model.childPages.size > 0}">
+            <ul class="page-list">
+                <sly data-sly-list.page="${model.childPages}">
+                    <li>
+                        <a href="${page.path}.html">${page.title}</a>
+                    </li>
+                </sly>
+            </ul>
+        </sly>
+
+        <sly data-sly-test="${!model.childPages || model.childPages.size == 0}">
+            <p class="no-children">No subpages found.</p>
+        </sly>
+    </div>
+
+    <style>
+        .page-list-container {
+          max-width: 800px;
+          margin: 60px auto;
+          padding: 24px;
+          border-radius: 12px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .page-list-title {
+          font-size: 2rem;
+          font-weight: 600;
+          margin-bottom: 32px;
+          text-align: center;
+        }
+
+        .page-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .page-list li {
+          display: block;
+        }
+
+        .page-list a {
+          text-decoration: none;
+          color: #2563eb;
+          font-weight: 500;
+          display: block;
+          padding: 12px 18px;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          transition: background 0.3s, transform 0.2s;
+        }
+
+        .page-list a:hover {
+          background: #eff6ff;
+          transform: translateY(-1px);
+        }
+
+        .no-children {
+          text-align: center;
+          color: #666;
+          font-style: italic;
+        }
+
+        /* Light Theme */
+        .theme-light {
+          background-color: #ffffff;
+          color: #333333;
+        }
+
+        /* Dark Theme */
+        .theme-dark {
+          background-color: #111827;
+          color: #f9fafb;
+        }
+
+        .theme-dark .page-list a {
+          color: #60a5fa;
+          border-color: #374151;
+        }
+
+        .theme-dark .page-list a:hover {
+          background-color: #1f2937;
+        }
+    </style>
+</sly>

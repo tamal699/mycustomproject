@@ -18,15 +18,13 @@ import com.day.cq.wcm.api.PageManager;
 @Model(adaptables = SlingHttpServletRequest.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class PageInfoDashboardModel {
 
-    // Way 1: Using @ScriptVariable
+
     @ScriptVariable
     private Page currentPage;
 
-    // Way 2: Using PageManager
     @Self
     private SlingHttpServletRequest request;
 
-    // Fields
     private String pageTitle;
     private String pagePath;
     private String pageTemplate;
@@ -38,7 +36,7 @@ public class PageInfoDashboardModel {
 
     @PostConstruct
     protected void init() {
-        // --- Way 1: Using @ScriptVariable ---
+
         if (currentPage != null) {
             pageTitle = currentPage.getTitle();
             pagePath = currentPage.getPath();
@@ -55,7 +53,7 @@ public class PageInfoDashboardModel {
             lastModifiedBy = currentPage.getLastModifiedBy();
         }
 
-        // --- Way 2: Using PageManager ---
+        // --- pageManager ---
         PageManager pageManager = request.getResourceResolver().adaptTo(PageManager.class);
         if (pageManager != null && currentPage != null) {
             Page pageViaManager = pageManager.getPage(currentPage.getPath());

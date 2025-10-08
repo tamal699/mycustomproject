@@ -14,10 +14,6 @@ import org.apache.sling.models.annotations.injectorspecific.Self;
 
 import com.day.cq.wcm.api.Page;
 
-/**
- * ResourceInfoDashboardModel
- * This model lists all **child pages** under the current page.
- */
 @Model(adaptables = SlingHttpServletRequest.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ResourceInfoDashboardModel {
 
