@@ -1,7 +1,7 @@
 <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
      data-sly-call="${clientlib.all @ categories='mycustomproject.header2'}" />
 
-<sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.HeaderModel">
+<sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.HeaderModel3">
 
   <header class="site-header ${model.themeClass}">
     <div class="header-container">
@@ -14,37 +14,52 @@
       </div>
 
       <!-- Center: Navigation -->
-      <nav class="header-nav">
-        <ul>
-          <sly data-sly-list.nav="${model.navigationItems}">
-            <li>
-              <a href="${nav.path}.html">${nav.title}</a>
+<!--      <nav class="header-nav">-->
+<!--        <ul>-->
+<!--          <sly data-sly-list.nav="${model.navigationItems}">-->
+<!--            <li>-->
+<!--              <a href="${nav.path}.html">${nav.title}</a>-->
 
-              <sly data-sly-test="${nav.children && nav.children.size > 0}">
-                <ul>
-                  <sly data-sly-list.child="${nav.children}">
+<!--              <sly data-sly-test="${nav.children && nav.children.size > 0}">-->
+<!--                <ul>-->
+<!--                  <sly data-sly-list.child="${nav.children}">-->
+<!--                    <li>-->
+<!--                      <a href="${child.path}.html">${child.title}</a>-->
+
+<!--                      <sly data-sly-test="${child.children && child.children.size > 0}">-->
+<!--                        <ul>-->
+<!--                          <sly data-sly-list.subchild="${child.children}">-->
+<!--                            <li><a href="${subchild.path}.html">${subchild.title}</a></li>-->
+<!--                          </sly>-->
+<!--                        </ul>-->
+<!--                      </sly>-->
+
+<!--                    </li>-->
+<!--                  </sly>-->
+<!--                </ul>-->
+<!--              </sly>-->
+
+<!--            </li>-->
+<!--          </sly>-->
+<!--        </ul>-->
+<!--      </nav>-->
+        <nav class="header-nav">
+            <ul>
+                <sly data-sly-list.nav="${model.navigationItems}">
                     <li>
-                      <a href="${child.path}.html">${child.title}</a>
-
-                      <sly data-sly-test="${child.children && child.children.size > 0}">
-                        <ul>
-                          <sly data-sly-list.subchild="${child.children}">
-                            <li><a href="${subchild.path}.html">${subchild.title}</a></li>
-                          </sly>
-                        </ul>
-                      </sly>
-
+                        <a href="${nav.path}.html">${nav.title}</a>
+                        <sly data-sly-test="${nav.children && nav.children.size > 0}">
+                            <ul data-sly-list.child="${nav.children}">
+                                <li><a href="${child.path}.html">${child.title}</a></li>
+                            </ul>
+                        </sly>
                     </li>
-                  </sly>
-                </ul>
-              </sly>
+                </sly>
+            </ul>
+        </nav>
 
-            </li>
-          </sly>
-        </ul>
-      </nav>
 
-      <!-- Right: Search -->
+        <!-- Right: Search -->
       <div class="header-search">
         <form action="/search" method="get">
           <input type="text" name="q" placeholder="Search..." />
