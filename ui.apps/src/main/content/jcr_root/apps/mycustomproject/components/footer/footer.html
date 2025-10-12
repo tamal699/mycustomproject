@@ -1,23 +1,31 @@
 <sly data-sly-use.footer="com.mycompany.aem.mycustomproject.core.models.FooterModel" />
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
-     data-sly-call="${clientlib.all @ categories='mycustomproject.footer'}" />
+<sly
+  data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+  data-sly-call="${clientlib.all @ categories='mycustomproject.footer'}"
+/>
 
 <div class="footer">
-  <div class="footer-logo">
-    <a href="${footer.logoLink}">
-      <img src="${footer.logoImage}" alt="${footer.footerData.logoDesc}">
-    </a>
-    <p>${footer.logoDesc}</p>
-  </div>
+  <div class="footer-container">
+    <div class="footer-logo-col">
+      <a href="${footer.logoLink @ context='uri'}" class="footer-logo-link">
+        <img
+          src="${footer.logoImage @ context='uri'}"
+          alt="${footer.logoDesc}"
+          class="footer-logo-img"
+        />
+      </a>
+      <p class="footer-logo-desc">${footer.logoDesc}</p>
+    </div>
 
-  <div class="footer-links">
-    <ul data-sly-list.group="${footer.footerLinks}">
-      <li>
-        <strong>${group.title}</strong>
-        <ul data-sly-list.link="${group.links}">
-          <li><a href="${link.linkPath}">${link.linkText}</a></li>
+    <div class="footer-links-col" data-sly-list.group="${footer.footerLinks}">
+      <div class="footer-link-group">
+        <h4 class="footer-group-title">${group.title}</h4>
+        <ul class="footer-link-list" data-sly-list.link="${group.links}">
+          <li>
+            <a href="${link.linkPath @ context='uri'}" class="footer-link-item">${link.linkText}</a>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>
