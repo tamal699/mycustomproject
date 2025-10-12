@@ -1,0 +1,23 @@
+<sly data-sly-use.footer="com.mycompany.aem.mycustomproject.core.models.FooterModel" />
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='mycustomproject.footer'}" />
+
+<div class="footer">
+  <div class="footer-logo">
+    <a href="${footer.logoLink}">
+      <img src="${footer.logoImage}" alt="${footer.footerData.logoDesc}">
+    </a>
+    <p>${footer.logoDesc}</p>
+  </div>
+
+  <div class="footer-links">
+    <ul data-sly-list.group="${footer.footerLinks}">
+      <li>
+        <strong>${group.title}</strong>
+        <ul data-sly-list.link="${group.links}">
+          <li><a href="${link.linkPath}">${link.linkText}</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

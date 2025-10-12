@@ -12,9 +12,6 @@ public class Slide {
     private String image;
 
     @ValueMapValue
-    private String title;
-
-    @ValueMapValue
     private String description;
 
     @ValueMapValue
@@ -22,10 +19,6 @@ public class Slide {
 
     public String getImage() {
         return image;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getDescription() {
