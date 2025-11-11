@@ -1,0 +1,29 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='mycustomproject.currencyconverter'}" />
+
+<sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.CurrencyConverterModel" />
+
+<div class="currency-converter">
+    <label for="sourceCurrency">Source Currency:</label>
+    <select id="sourceCurrency">
+        <option value="USD" ${model.sourceCurrency == 'USD' ? 'selected' : ''}>USD</option>
+        <option value="INR" ${model.sourceCurrency == 'INR' ? 'selected' : ''}>INR</option>
+        <option value="EUR" ${model.sourceCurrency == 'EUR' ? 'selected' : ''}>EUR</option>
+    </select>
+
+    <label for="targetCurrency">Target Currency:</label>
+    <select id="targetCurrency">
+        <option value="USD" ${model.targetCurrency == 'USD' ? 'selected' : ''}>USD</option>
+        <option value="INR" ${model.targetCurrency == 'INR' ? 'selected' : ''}>INR</option>
+        <option value="EUR" ${model.targetCurrency == 'EUR' ? 'selected' : ''}>EUR</option>
+    </select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount" value="${model.amount}" />
+
+    <button id="convertBtn">Convert</button>
+
+    <div id="resultArea">
+        Converted Amount: ${model.convertedAmount @ context='text'}
+    </div>
+</div>

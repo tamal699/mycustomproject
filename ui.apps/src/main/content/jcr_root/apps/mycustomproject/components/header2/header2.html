@@ -1,74 +1,35 @@
-<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
-     data-sly-call="${clientlib.all @ categories='mycustomproject.header2'}" />
-
 <sly data-sly-use.model="com.mycompany.aem.mycustomproject.core.models.HeaderModel3">
+    <sly
+            data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+            data-sly-call="${clientlib.all @ categories='mycustomproject.header2'}" />
 
-  <header class="site-header ${model.themeClass}">
-    <div class="header-container">
+    <header class="site-header ${model.themeClass}">
+        <div class="header-container">
 
-      <!-- Left: Logo -->
-      <div class="header-left">
-        <a href="/content/mycustomproject/us/en/main-page.html">
-          <img src="${model.logo @ context='uri'}" alt="Site Logo" />
-        </a>
-      </div>
+            <!-- Left: Logo -->
+            <div class="header-left">
+                <a href="/content/mycustomproject/us/en/main-page.html">
+                    <img src="${model.logo @ context='uri'}" alt="Site Logo" />
+                </a>
+            </div>
 
-      <!-- Center: Navigation -->
-<!--      <nav class="header-nav">-->
-<!--        <ul>-->
-<!--          <sly data-sly-list.nav="${model.navigationItems}">-->
-<!--            <li>-->
-<!--              <a href="${nav.path}.html">${nav.title}</a>-->
+            <!-- Right: Search -->
+            <div class="header-search">
+                <input
+                        type="text"
+                        id="header-search-input"
+                        class="header-search-input"
+                        placeholder="Search..."
+                        autocomplete="off"
+                />
+                <button id="header-search-btn" type="button" class="header-search-btn">
+                    <img src="${model.searchIcon @ context='uri'}" alt="Search" />
+                </button>
 
-<!--              <sly data-sly-test="${nav.children && nav.children.size > 0}">-->
-<!--                <ul>-->
-<!--                  <sly data-sly-list.child="${nav.children}">-->
-<!--                    <li>-->
-<!--                      <a href="${child.path}.html">${child.title}</a>-->
+                <!-- 🔽 Dynamic Search Dropdown -->
+                <div id="header-search-results" class="header-search-results"></div>
+            </div>
 
-<!--                      <sly data-sly-test="${child.children && child.children.size > 0}">-->
-<!--                        <ul>-->
-<!--                          <sly data-sly-list.subchild="${child.children}">-->
-<!--                            <li><a href="${subchild.path}.html">${subchild.title}</a></li>-->
-<!--                          </sly>-->
-<!--                        </ul>-->
-<!--                      </sly>-->
-
-<!--                    </li>-->
-<!--                  </sly>-->
-<!--                </ul>-->
-<!--              </sly>-->
-
-<!--            </li>-->
-<!--          </sly>-->
-<!--        </ul>-->
-<!--      </nav>-->
-        <nav class="header-nav">
-            <ul>
-                <sly data-sly-list.nav="${model.navigationItems}">
-                    <li>
-                        <a href="${nav.path}.html">${nav.title}</a>
-                        <sly data-sly-test="${nav.children && nav.children.size > 0}">
-                            <ul data-sly-list.child="${nav.children}">
-                                <li><a href="${child.path}.html">${child.title}</a></li>
-                            </ul>
-                        </sly>
-                    </li>
-                </sly>
-            </ul>
-        </nav>
-
-
-        <!-- Right: Search -->
-      <div class="header-search">
-        <form action="/search" method="get">
-          <input type="text" name="q" placeholder="Search..." />
-          <button type="submit">
-            <img src="${model.searchIcon @ context='uri'}" alt="Search" />
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </header>
+        </div>
+    </header>
 </sly>

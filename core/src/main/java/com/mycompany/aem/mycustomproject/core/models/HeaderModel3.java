@@ -1,10 +1,8 @@
 package com.mycompany.aem.mycustomproject.core.models;
 
 import com.day.cq.wcm.api.Page;
-import com.mycompany.aem.mycustomproject.core.beans.NavigationItem;
-import com.mycompany.aem.mycustomproject.core.services.NavigationService;
+import com.mycompany.aem.mycustomproject.core.services.SearchService;
 import org.apache.sling.api.SlingHttpServletRequest;
-import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
@@ -15,15 +13,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
-@Model(
-        adaptables = SlingHttpServletRequest.class,
-        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
-)
+@Model(adaptables = SlingHttpServletRequest.class,
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class HeaderModel3 {
+
     private static final Logger LOG = LoggerFactory.getLogger(HeaderModel3.class);
 
     @Self
@@ -39,38 +34,25 @@ public class HeaderModel3 {
     private String searchIcon;
 
     @OSGiService
-    private NavigationService navigationService;
+    private SearchService searchService;
 
-    private List<NavigationItem> navigationItems;
-
-    private int maxDepth = 2;
+    private List<Map<String, String>> searchResults = new ArrayList<>();
 
     @PostConstruct
     protected void init() {
-        try {
-            ResourceResolver resolver = request.getResourceResolver();
-            Page rootPage = resolver.getResource(currentPage.getPath()).adaptTo(Page.class);
-            if (rootPage != null) {
-                navigationItems = navigationService.buildNavigation(rootPage, maxDepth);
-            } else {
-                navigationItems = new ArrayList<>();
-                LOG.warn("pg nt fnd: ");
-            }
-        } catch (Exception e) {
-            LOG.error("som errorr: ", e);
-            navigationItems = new ArrayList<>();
-        }
+        LOG.info("HeaderModel initialized for page: {}",
+                currentPage != null ? currentPage.getPath() : "unknown");
     }
 
-    public List<NavigationItem> getNavigationItems() {
-        return navigationItems;
+    public void executeSearch(String term) {
+        this.searchResults = searchService.searchPages(request.getResourceResolver(), term);
     }
 
-    public String getLogo() {
-        return logo;
+    public List<Map<String, String>> getSearchResults() {
+        return searchResults;
     }
 
-    public String getSearchIcon() {
-        return searchIcon;
-    }
+    public String getLogo() { return logo; }
+
+    public String getSearchIcon() { return searchIcon; }
 }
